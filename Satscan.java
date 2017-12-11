@@ -12,7 +12,7 @@ import java.math.*;
 
 
 
-// Checking whether ---- it's happenning or not 
+
 
 public class Satscan {
 	
