@@ -15,7 +15,8 @@ import java.math.*;
 
 
 public class Satscan {
-	
+	static int mthreads = 1 ;
+	static int cthreads =1 ; 
 	//Distance function calculates the straight distance, same as we draw straight line between two points 
 	//This is totally different from google map distance, since it uses road dataset for calculating distance.
 	public static double distance(double lat1, double lon1, double lat2, double lon2) {
@@ -58,8 +59,8 @@ public class Satscan {
 	}
 	
 	public static List<Double> MCSimulations(int simulations,final int P,final  double min_lat,final double max_lat,final double min_long,final  double max_long,final int study_area) throws InterruptedException, ExecutionException{
-		Integer threads = Runtime.getRuntime().availableProcessors();
-	    ExecutorService service = Executors.newFixedThreadPool(threads);
+		//Integer threads = Runtime.getRuntime().availableProcessors();
+	    ExecutorService service = Executors.newFixedThreadPool(mthreads);
 	   // System.out.println(threads);
 	    List<Future<Double>> futures = new ArrayList<Future<Double>>();
 	    
@@ -283,8 +284,8 @@ public class Satscan {
 	private static void populateCandidateCirclesCopy(List<Circles> candidate_circles,double[][] finalGrid, ArrayList<Coordinates> centres, List<Coordinates> address,int study_area, double llh_limit,
 			double rmin,double rmax) {
 		//	System.out.println("entered"); // Not entered 
-		Integer threads = Runtime.getRuntime().availableProcessors();
-	    ExecutorService service = Executors.newFixedThreadPool(threads);
+		 
+	    ExecutorService service = Executors.newFixedThreadPool(cthreads);
 	    List <Future<Circles>> list = new ArrayList<Future<Circles>>(); 
 			for (int i = 0; i < centres.size() ; i++) {	// For Each Center in the Grid 
 				Future <Circles> future = service.submit(new CallableAdder(i, finalGrid, centres, address,study_area,rmin,rmax,llh_limit));
