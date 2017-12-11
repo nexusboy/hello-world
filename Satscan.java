@@ -105,7 +105,7 @@ public class Satscan {
 			    		    			   //calculate log likelihood of each candidate circle
 			    		    			   double current_llh = loglikelihood(point_count, Address.size(), 3.14*radius_grid[i][j]*radius_grid[i][j], study_area);
 			    		    			   
-			    		    			   if(!Double.isFinite(current_llh)&& current_llh > max_llh){
+			    		    			   if(!Double.isInfinite(current_llh)&& current_llh > max_llh){
 			    		    				   max_llh = current_llh;
 			    		    			   }
 			    		    		   }
