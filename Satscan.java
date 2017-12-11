@@ -145,7 +145,7 @@ public class Satscan {
          	 double lat_spacing=0.3;
 		double long_spacing = 0.005 ; // This is the variable used while enumerating all possible points in that rectangle 
 		long startTime = System.currentTimeMillis();
-		BufferedReader br = new BufferedReader(new FileReader("break.csv"));
+		BufferedReader br = new BufferedReader(new FileReader("beep.csv"));
         String line = br.readLine();
         String splitBy = ",";
         double min_lat = 90, max_lat = -90;
@@ -157,8 +157,8 @@ public class Satscan {
         while((line = br.readLine()) != null){
             String[] b = line.split(splitBy);
             //System.out.println(b[0]+": "+b[1]+" "+b[2]);
-            double latitude = Double.parseDouble(b[13]);
-            double longitude = Double.parseDouble(b[14]);
+            double latitude = Double.parseDouble(b[1]);
+            double longitude = Double.parseDouble(b[0]);
           //  System.out.println("lat = " + latitude + "long = " + longitude);
             Address.add(new Coordinates(latitude, longitude));
             //System.out.println(distance(-111.9606778, 33.38364645, lat2, long2));
