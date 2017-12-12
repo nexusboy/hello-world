@@ -40,7 +40,7 @@ class Circles implements Comparable<Circles>{
 }
 
 public class Basic {
-	
+	public static int threads = 1; 
 	//Distance function calculates the straight distance, same as we draw straight line between two points 
 	//This is totally different from google map distance, since it uses road dataset for calculating distance.
 	public static double distance(double lat1, double lon1, double lat2, double lon2) {
@@ -82,7 +82,7 @@ public class Basic {
 	}
 	
 	public static List<Double> MCSimulations(int simulations,final int P, final double min_lat, final double max_lat, final double min_long, final double max_long, final int study_area) throws InterruptedException, ExecutionException{
-		Integer threads = Runtime.getRuntime().availableProcessors();
+		//Integer threads = Runtime.getRuntime().availableProcessors();
 	    ExecutorService service = Executors.newFixedThreadPool(threads);
 	   // System.out.println(threads);
 	    List<Future<Double>> futures = new ArrayList<Future<Double>>();
@@ -165,6 +165,7 @@ public class Basic {
 		 * Code for getting the input from the file
 		 * */
 		long startTime = System.currentTimeMillis();
+		threads = Integer.parseInt(args[0]);
 		BufferedReader br = new BufferedReader(new FileReader("beep.csv"));
         String line = br.readLine();
         String splitBy = ",";
